@@ -1,13 +1,16 @@
 extends Control
 
-onready var color_picker_node = get_node('container/container/colorPicker')
-onready var texture_node = get_node('container/container/container/texture')
+const CURSOR_EDIT = preload('res://assets/cursor-edit.png')
+
+onready var color_picker_node = get_node('container/controls/colorPicker')
+onready var texture_node = get_node('container/texture')
 onready var brush_button = get_node('container/brushesGroup')
 
-onready var reset_button = get_node('container/container/container/controls/reset')
-onready var revert_button = get_node('container/container/container/controls/revert')
-onready var save_button = get_node('container/container/container/controls/save')
-onready var open_button = get_node('container/container/container/controls/open')
+onready var reset_button = get_node('container/controls/reset')
+onready var revert_button = get_node('container/controls/container/revert')
+onready var grid_button = get_node('container/controls/container/grid')
+onready var save_button = get_node('container/controls/save')
+onready var open_button = get_node('container/controls/open')
 
 onready var file_dialog_popup = get_node('fileDialog')
 onready var file_dialog_open_popup = get_node('fileDialogOpen')
@@ -16,17 +19,21 @@ onready var warning_popup = get_node('warningPopup')
 var current_color = null
 
 func _ready():
+  color_picker_node.set_color('#222831')
+
   file_dialog_popup.set_current_dir(OS.get_system_dir(OS.SYSTEM_DIR_PICTURES))
   file_dialog_open_popup.set_current_dir(OS.get_system_dir(OS.SYSTEM_DIR_PICTURES))
 
   color_picker_node.connect('color_changed', self, '_update_color')
   brush_button.connect('button_selected', self, '_update_mouse_cursor')
 
-  reset_button.connect('pressed', texture_node, 'reset_image', [], CONNECT_DEFERRED)
-  revert_button.connect('pressed', texture_node, 'revert_image', [], CONNECT_DEFERRED)
+  reset_button.connect('pressed', texture_node, 'reset_image')
+  revert_button.connect('pressed', texture_node, 'revert_image')
+  grid_button.connect('toggled', texture_node, 'toggle_grid')
 
   save_button.connect('pressed', file_dialog_popup, 'set_hidden', [false])
   save_button.connect('pressed', file_dialog_popup, '_update_file_list', [], CONNECT_DEFERRED)
+
 
   file_dialog_popup.connect('file_selected', self, 'popup_closed', ['save_texture'])
 
@@ -35,9 +42,11 @@ func _ready():
 
   file_dialog_open_popup.connect('file_selected', self, 'popup_closed', ['open_texture'])
 
+  Input.set_custom_mouse_cursor(CURSOR_EDIT, Control.CURSOR_POINTING_HAND, CURSOR_EDIT.get_size() / 2.0)
   texture_node.set_default_cursor_shape(Control.CURSOR_POINTING_HAND)
 
   set_preset_colors()
+  _initialize_brushes()
   _update_color()
   _update_mouse_cursor()
 
@@ -68,6 +77,15 @@ func set_preset_colors():
 
   # Yellow
   color_picker_node.add_preset(Color('#e8bd44'))
+
+func _initialize_brushes():
+  var texture_scale = texture_node.get_custom_scale()
+  var button_list = brush_button.get_button_list()
+
+  print(texture_scale)
+
+  for button in button_list:
+    button.set_texture_scale(texture_scale)
 
 func _update_color(arg0 = null):
   current_color = color_picker_node.get_color()
@@ -101,4 +119,3 @@ func _update_mouse_cursor(arg0 = null):
   image_texture.set_flags(Texture.FLAG_MIPMAPS)
 
   texture_node.set_brush(image_texture)
-  Input.set_custom_mouse_cursor(image_texture, Control.CURSOR_POINTING_HAND, image_texture.get_size() / 2.0)

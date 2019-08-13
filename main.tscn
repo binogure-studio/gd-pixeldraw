@@ -1,18 +1,16 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
-[ext_resource path="res://texture.gd" type="Script" id=2]
-[ext_resource path="res://assets/revert-128x128.png" type="Texture" id=3]
-[ext_resource path="res://assets/brush-4x4.png" type="Texture" id=4]
-[ext_resource path="res://assets/brush-8x8.png" type="Texture" id=5]
-[ext_resource path="res://assets/brush-16x16.png" type="Texture" id=6]
-[ext_resource path="res://assets/brush-32x32.png" type="Texture" id=7]
-[ext_resource path="res://assets/brush-64x64.png" type="Texture" id=8]
-[ext_resource path="res://assets/circle-4x4.png" type="Texture" id=9]
-[ext_resource path="res://assets/circle-8x8.png" type="Texture" id=10]
-[ext_resource path="res://assets/circle-16x16.png" type="Texture" id=11]
-[ext_resource path="res://assets/circle-32x32.png" type="Texture" id=12]
-[ext_resource path="res://assets/circle-64x64.png" type="Texture" id=13]
+[ext_resource path="res://assets/brush-4x4.png" type="Texture" id=2]
+[ext_resource path="res://assets/brush-8x8.png" type="Texture" id=3]
+[ext_resource path="res://assets/brush-16x16.png" type="Texture" id=4]
+[ext_resource path="res://assets/brush-32x32.png" type="Texture" id=5]
+[ext_resource path="res://assets/circle-4x4.png" type="Texture" id=6]
+[ext_resource path="res://assets/circle-8x8.png" type="Texture" id=7]
+[ext_resource path="res://assets/circle-16x16.png" type="Texture" id=8]
+[ext_resource path="res://assets/circle-32x32.png" type="Texture" id=9]
+[ext_resource path="res://texture.gd" type="Script" id=10]
+[ext_resource path="res://assets/revert-128x128.png" type="Texture" id=11]
 
 [node name="main" type="Control"]
 
@@ -23,23 +21,11 @@ size_flags/horizontal = 0
 size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 420.0
-margin/bottom = 509.0
+margin/right = 1024.0
+margin/bottom = 600.0
 script/script = ExtResource( 1 )
 
-[node name="container" type="VBoxContainer" parent="."]
-
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 1024.0
-margin/bottom = 793.0
-alignment = 0
-
-[node name="container" type="HBoxContainer" parent="container"]
+[node name="container" type="HBoxContainer" parent="."]
 
 rect/min_size = Vector2( 548, 0 )
 focus/ignore_mouse = false
@@ -48,169 +34,47 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 1024.0
-margin/bottom = 441.0
-alignment = 0
-
-[node name="container" type="VBoxContainer" parent="container/container"]
-
-rect/min_size = Vector2( 256, 0 )
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 3
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 732.0
-margin/bottom = 441.0
-alignment = 0
-
-[node name="texture" type="TextureFrame" parent="container/container/container"]
-
-rect/min_size = Vector2( 128, 128 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 1
-size_flags/vertical = 1
-margin/left = 302.0
-margin/top = 138.0
-margin/right = 430.0
-margin/bottom = 266.0
-expand = true
-stretch_mode = 5
-script/script = ExtResource( 2 )
-image_height = 128
-image_width = 128
-
-[node name="controls" type="HBoxContainer" parent="container/container/container"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 409.0
-margin/right = 732.0
-margin/bottom = 441.0
-alignment = 0
-
-[node name="revert" type="TextureButton" parent="container/container/container/controls"]
-
-rect/min_size = Vector2( 32, 32 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 144.0
-margin/bottom = 32.0
-toggle_mode = false
-enabled_focus_mode = 0
-shortcut = null
-textures/normal = ExtResource( 3 )
-params/resize_mode = 1
-params/stretch_mode = 6
-
-[node name="reset" type="Button" parent="container/container/container/controls"]
-
-rect/min_size = Vector2( 192, 32 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 1
-size_flags/vertical = 1
-margin/left = 148.0
-margin/top = 0.0
-margin/right = 340.0
-margin/bottom = 32.0
-toggle_mode = false
-enabled_focus_mode = 0
-shortcut = null
-text = "BUTTON_RESET"
-flat = false
-
-[node name="save" type="Button" parent="container/container/container/controls"]
-
-rect/min_size = Vector2( 192, 32 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 1
-size_flags/vertical = 1
-margin/left = 344.0
-margin/top = 0.0
-margin/right = 536.0
-margin/bottom = 32.0
-toggle_mode = false
-enabled_focus_mode = 0
-shortcut = null
-text = "BUTTON_SAVE"
-flat = false
-
-[node name="open" type="Button" parent="container/container/container/controls"]
-
-rect/min_size = Vector2( 192, 32 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 1
-size_flags/vertical = 1
-margin/left = 540.0
-margin/top = 0.0
-margin/right = 732.0
-margin/bottom = 32.0
-toggle_mode = false
-enabled_focus_mode = 0
-shortcut = null
-text = "BUTTON_OPEN"
-flat = false
-
-[node name="colorPicker" type="ColorPicker" parent="container/container"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 3
-margin/left = 736.0
-margin/top = 0.0
-margin/right = 1024.0
-margin/bottom = 441.0
+margin/right = 1004.0
+margin/bottom = 640.0
 alignment = 0
 
 [node name="brushesGroup" type="ButtonGroup" parent="container"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 445.0
-margin/right = 1024.0
-margin/bottom = 577.0
-alignment = 0
-
-[node name="container" type="VBoxContainer" parent="container/brushesGroup"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
+size_flags/horizontal = 3
+size_flags/vertical = 3
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 1024.0
-margin/bottom = 132.0
+margin/right = 68.0
+margin/bottom = 768.0
 alignment = 0
 
-[node name="rectangle" type="HBoxContainer" parent="container/brushesGroup/container"]
+[node name="container" type="HBoxContainer" parent="container/brushesGroup"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 68.0
+margin/bottom = 768.0
+alignment = 0
+
+[node name="rectangle" type="VBoxContainer" parent="container/brushesGroup/container"]
 
 rect/min_size = Vector2( 0, 64 )
 focus/ignore_mouse = true
 focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
+size_flags/horizontal = 3
+size_flags/vertical = 3
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 1024.0
-margin/bottom = 64.0
+margin/right = 32.0
+margin/bottom = 768.0
+custom_constants/separation = 0
 alignment = 0
 
 [node name="4x4" type="TextureButton" parent="container/brushesGroup/container/rectangle"]
@@ -222,14 +86,14 @@ size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 201.0
-margin/bottom = 64.0
+margin/right = 32.0
+margin/bottom = 192.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 1
 shortcut = null
-textures/normal = ExtResource( 4 )
-params/resize_mode = 1
+textures/normal = ExtResource( 2 )
+params/resize_mode = 0
 params/stretch_mode = 4
 
 [node name="8x8" type="TextureButton" parent="container/brushesGroup/container/rectangle"]
@@ -239,16 +103,16 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 205.0
-margin/top = 0.0
-margin/right = 406.0
-margin/bottom = 64.0
+margin/left = 0.0
+margin/top = 192.0
+margin/right = 32.0
+margin/bottom = 384.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 1
 shortcut = null
-textures/normal = ExtResource( 5 )
-params/resize_mode = 1
+textures/normal = ExtResource( 3 )
+params/resize_mode = 0
 params/stretch_mode = 4
 
 [node name="16x16" type="TextureButton" parent="container/brushesGroup/container/rectangle"]
@@ -258,17 +122,17 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 410.0
-margin/top = 0.0
-margin/right = 611.0
-margin/bottom = 64.0
+margin/left = 0.0
+margin/top = 384.0
+margin/right = 32.0
+margin/bottom = 576.0
 toggle_mode = true
 is_pressed = true
 click_on_press = true
 enabled_focus_mode = 1
 shortcut = null
-textures/normal = ExtResource( 6 )
-params/resize_mode = 1
+textures/normal = ExtResource( 4 )
+params/resize_mode = 0
 params/stretch_mode = 4
 
 [node name="32x32" type="TextureButton" parent="container/brushesGroup/container/rectangle"]
@@ -278,48 +142,30 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 615.0
-margin/top = 0.0
-margin/right = 816.0
-margin/bottom = 64.0
+margin/left = 0.0
+margin/top = 576.0
+margin/right = 32.0
+margin/bottom = 768.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 1
 shortcut = null
-textures/normal = ExtResource( 7 )
-params/resize_mode = 1
+textures/normal = ExtResource( 5 )
+params/resize_mode = 0
 params/stretch_mode = 4
 
-[node name="64x64" type="TextureButton" parent="container/brushesGroup/container/rectangle"]
-
-rect/min_size = Vector2( 64, 64 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 3
-margin/left = 820.0
-margin/top = 0.0
-margin/right = 1024.0
-margin/bottom = 64.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 1
-shortcut = null
-textures/normal = ExtResource( 8 )
-params/resize_mode = 1
-params/stretch_mode = 4
-
-[node name="circle" type="HBoxContainer" parent="container/brushesGroup/container"]
+[node name="circle" type="VBoxContainer" parent="container/brushesGroup/container"]
 
 rect/min_size = Vector2( 0, 64 )
 focus/ignore_mouse = true
 focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 68.0
-margin/right = 1024.0
-margin/bottom = 132.0
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 36.0
+margin/top = 0.0
+margin/right = 68.0
+margin/bottom = 768.0
+custom_constants/separation = 0
 alignment = 0
 
 [node name="4x4" type="TextureButton" parent="container/brushesGroup/container/circle"]
@@ -331,14 +177,14 @@ size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 201.0
-margin/bottom = 64.0
+margin/right = 32.0
+margin/bottom = 192.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 1
 shortcut = null
-textures/normal = ExtResource( 9 )
-params/resize_mode = 1
+textures/normal = ExtResource( 6 )
+params/resize_mode = 0
 params/stretch_mode = 4
 
 [node name="8x8" type="TextureButton" parent="container/brushesGroup/container/circle"]
@@ -348,16 +194,16 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 205.0
-margin/top = 0.0
-margin/right = 406.0
-margin/bottom = 64.0
+margin/left = 0.0
+margin/top = 192.0
+margin/right = 32.0
+margin/bottom = 384.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 1
 shortcut = null
-textures/normal = ExtResource( 10 )
-params/resize_mode = 1
+textures/normal = ExtResource( 7 )
+params/resize_mode = 0
 params/stretch_mode = 4
 
 [node name="16x16" type="TextureButton" parent="container/brushesGroup/container/circle"]
@@ -367,16 +213,16 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 410.0
-margin/top = 0.0
-margin/right = 611.0
-margin/bottom = 64.0
+margin/left = 0.0
+margin/top = 384.0
+margin/right = 32.0
+margin/bottom = 576.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 1
 shortcut = null
-textures/normal = ExtResource( 11 )
-params/resize_mode = 1
+textures/normal = ExtResource( 8 )
+params/resize_mode = 0
 params/stretch_mode = 4
 
 [node name="32x32" type="TextureButton" parent="container/brushesGroup/container/circle"]
@@ -386,36 +232,157 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 615.0
-margin/top = 0.0
-margin/right = 816.0
-margin/bottom = 64.0
+margin/left = 0.0
+margin/top = 576.0
+margin/right = 32.0
+margin/bottom = 768.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 1
 shortcut = null
-textures/normal = ExtResource( 12 )
-params/resize_mode = 1
+textures/normal = ExtResource( 9 )
+params/resize_mode = 0
 params/stretch_mode = 4
 
-[node name="64x64" type="TextureButton" parent="container/brushesGroup/container/circle"]
+[node name="texture" type="TextureFrame" parent="container"]
 
-rect/min_size = Vector2( 64, 64 )
+visibility/behind_parent = true
+rect/min_size = Vector2( 768, 768 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+margin/left = 72.0
+margin/top = 0.0
+margin/right = 840.0
+margin/bottom = 768.0
+expand = true
+stretch_mode = 6
+script/script = ExtResource( 10 )
+image_height = 128
+image_width = 128
+
+[node name="controls" type="VBoxContainer" parent="container"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 844.0
+margin/top = 0.0
+margin/right = 1132.0
+margin/bottom = 768.0
+alignment = 0
+
+[node name="colorPicker" type="ColorPicker" parent="container/controls"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 288.0
+margin/bottom = 441.0
+alignment = 0
+
+[node name="container" type="HBoxContainer" parent="container/controls"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 445.0
+margin/right = 288.0
+margin/bottom = 477.0
+alignment = 0
+
+[node name="revert" type="TextureButton" parent="container/controls/container"]
+
+rect/min_size = Vector2( 32, 32 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 820.0
+margin/left = 0.0
 margin/top = 0.0
-margin/right = 1024.0
-margin/bottom = 64.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 1
+margin/right = 142.0
+margin/bottom = 32.0
+toggle_mode = false
+enabled_focus_mode = 0
 shortcut = null
-textures/normal = ExtResource( 13 )
+textures/normal = ExtResource( 11 )
 params/resize_mode = 1
-params/stretch_mode = 4
+params/stretch_mode = 6
+
+[node name="grid" type="CheckBox" parent="container/controls/container"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 146.0
+margin/top = 0.0
+margin/right = 288.0
+margin/bottom = 32.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "BUTTON_GRID"
+flat = false
+align = 0
+
+[node name="reset" type="Button" parent="container/controls"]
+
+rect/min_size = Vector2( 192, 32 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+margin/left = 48.0
+margin/top = 511.0
+margin/right = 240.0
+margin/bottom = 543.0
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+text = "BUTTON_RESET"
+flat = false
+
+[node name="save" type="Button" parent="container/controls"]
+
+rect/min_size = Vector2( 192, 32 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+margin/left = 48.0
+margin/top = 608.0
+margin/right = 240.0
+margin/bottom = 640.0
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+text = "BUTTON_SAVE"
+flat = false
+
+[node name="open" type="Button" parent="container/controls"]
+
+rect/min_size = Vector2( 192, 32 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+margin/left = 48.0
+margin/top = 705.0
+margin/right = 240.0
+margin/bottom = 737.0
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+text = "BUTTON_OPEN"
+flat = false
 
 [node name="fileDialog" type="FileDialog" parent="."]
 
@@ -429,7 +396,7 @@ margin/top = 100.0
 margin/right = 823.0
 margin/bottom = 470.0
 popup/exclusive = true
-window/title = "LABEL_SAVE_FILE"
+window/title = "Save a File"
 dialog/hide_on_ok = true
 mode = 4
 access = 2
@@ -448,7 +415,7 @@ margin/top = 100.0
 margin/right = 823.0
 margin/bottom = 470.0
 popup/exclusive = true
-window/title = "LABEL_OPEN_FILE"
+window/title = "Open a File"
 dialog/hide_on_ok = true
 mode = 0
 access = 2
